@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint src/**"
+    "lint": "eslint src/**/*.{js,jsx,json} --fix"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.58.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
