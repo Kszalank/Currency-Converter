@@ -3,7 +3,7 @@ import React from "react";
 function SecondHeaderV2() {
   return (
     <div>
-      <h2 className="header-2">Convert values</h2>
+      <h2 className="header2">Convert</h2>
     </div>
   );
 }
