@@ -18,5 +18,13 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": ["off"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: true,
+        optionalDependencies: false,
+        peerDependencies: false,
+      },
+    ],
   },
 };
