@@ -1,7 +1,7 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
-import CurrenciesListPage from "./page components/CurrenciesListPage";
-import DetailsPage from "./page components/DetailsPage";
+import CurrenciesListPage from "./pages/CurrenciesListPage";
+import DetailsPage from "./pages/DetailsPage";
 
 function App() {
   return (
