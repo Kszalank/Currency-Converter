@@ -1,12 +1,11 @@
 import React from "react";
-import uuid from "react-uuid";
 
-function Select({ value, onChange, options }) {
+function Select({ selectedValue, onChange, options }) {
   return (
-    <select onChange={onChange} value={value}>
-      {options.map((element, index) => (
-        <option key={uuid()} label={options[index].label}>
-          {options[index].value}
+    <select onChange={onChange} value={selectedValue}>
+      {options.map(({ value, label }) => (
+        <option key={value} label={label}>
+          {value}
         </option>
       ))}
     </select>

@@ -13,7 +13,7 @@ function CurrenciesList() {
       <Heading variant="title">Currency Converter</Heading>
       <Heading variant="subtitle">Choose base currency</Heading>
       <Select
-        value={value}
+        selectedValue={value}
         onChange={(event) => {
           setValue(event.target.value);
         }}
