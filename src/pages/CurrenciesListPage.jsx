@@ -4,22 +4,22 @@ import Select from "../components/Selector";
 
 function CurrenciesList() {
   const options = [
-    { value: "elo", label: "elo" },
-    { value: "siema", label: "siema" },
+    { currency: "elo", label: "elo" },
+    { currency: "siema", label: "siema" },
   ];
-  const [value, setValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
   return (
     <div>
       <Heading variant="title">Currency Converter</Heading>
       <Heading variant="subtitle">Choose base currency</Heading>
       <Select
-        selectedValue={value}
+        value={selectedValue}
         onChange={(event) => {
-          setValue(event.target.value);
+          setSelectedValue(event.target.value);
         }}
         options={options}
       />
-      <div>Value {value}</div>
+      <div>Value {selectedValue}</div>
     </div>
   );
 }
