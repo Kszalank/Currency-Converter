@@ -1,32 +1,25 @@
 import React from "react";
+import "../styles/Table.scss";
 
-function Table({ list }) {
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Currency</th>
-          <th>Value</th>
-          <th>Change</th>
-        </tr>
-      </thead>
-      <tbody>
-        {list.map(({ names, value, change }) => (
-          <tr key={names + value + change}>
-            <td key={names} className="table-element">
-              {names}
-            </td>
-            <td key={names + value} className="table-element">
-              {value}
-            </td>
-            <td key={names + change} className="table-element">
-              {change}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+export function TableContainer({ children }) {
+  return <div>{children}</div>;
+}
+export function Table({ children }) {
+  return <table>{children}</table>;
 }
 
-export default Table;
+export function Thead({ children }) {
+  return <thead>{children}</thead>;
+}
+export function Th({ children }) {
+  return <th>{children}</th>;
+}
+export function Tr({ children }) {
+  return <tr>{children}</tr>;
+}
+export function Tbody({ children }) {
+  return <tbody>{children}</tbody>;
+}
+export function Td({ children }) {
+  return <td className="table-element">{children}</td>;
+}

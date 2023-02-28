@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import Select from "../components/Selector";
-import Table from "../components/Table";
+import {
+  Table,
+  TableContainer,
+  Thead,
+  Th,
+  Tbody,
+  Tr,
+  Td,
+} from "../components/Table";
 
 function CurrenciesList() {
   const options = [
@@ -33,7 +41,25 @@ function CurrenciesList() {
         onChange={(event) => setSelectedValue(event.target.value)}
       />
       <div>Value {selectedValue}</div>
-      <Table list={currenciesChange} />
+
+      <TableContainer>
+        <Table>
+          <Thead>
+            <Th>Currency</Th>
+            <Th>Value</Th>
+            <Th>Change</Th>
+          </Thead>
+          <Tbody>
+            {currenciesChange.map(({ names, value, change }) => (
+              <Tr key={names + value + change}>
+                <Td key={names}>{names}</Td>
+                <Td key={names + value}>{value}</Td>
+                <Td key={names + change}>{change}</Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
     </div>
   );
 }
