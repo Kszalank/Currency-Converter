@@ -45,16 +45,18 @@ function CurrenciesList() {
       <TableContainer>
         <Table>
           <Thead>
-            <Th>Currency</Th>
-            <Th>Value</Th>
-            <Th>Change</Th>
+            <Tr>
+              <Th>Currency</Th>
+              <Th>Value</Th>
+              <Th>Change</Th>
+            </Tr>
           </Thead>
           <Tbody>
             {currenciesChange.map(({ names, value, change }) => (
               <Tr key={names + value + change}>
-                <Td key={names}>{names}</Td>
-                <Td key={names + value}>{value}</Td>
-                <Td key={names + change}>{change}</Td>
+                <Td>{names}</Td>
+                <Td>{value}</Td>
+                <Td>{change}</Td>
               </Tr>
             ))}
           </Tbody>
