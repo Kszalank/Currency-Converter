@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Breadcrumps from "../components/Breadcrump";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import Select from "../components/Selector";
@@ -11,6 +12,7 @@ import {
   Tr,
   Td,
 } from "../components/Table";
+import "../styles/CurrenciesListPage.scss";
 
 function CurrenciesList() {
   const options = [
@@ -26,6 +28,16 @@ function CurrenciesList() {
   const [selectedValue, setSelectedValue] = useState("");
   return (
     <div>
+      <div className="breadcrumps-container">
+        <Breadcrumps variant="" page="currencies-list">
+          Currencies list
+        </Breadcrumps>
+        /
+        <Breadcrumps variant="details" page="currencies-list">
+          Details
+        </Breadcrumps>
+      </div>
+
       <Heading variant="title">Currency Converter</Heading>
       <Heading variant="subtitle">Choose base currency</Heading>
       <Select
@@ -41,7 +53,6 @@ function CurrenciesList() {
         onChange={(event) => setSelectedValue(event.target.value)}
       />
       <div>Value {selectedValue}</div>
-
       <TableContainer>
         <Table>
           <Thead>
