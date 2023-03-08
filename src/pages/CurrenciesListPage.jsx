@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Breadcrumps from "../components/Breadcrump";
+import Breadcrumbs from "../components/Breadcrumb";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import Select from "../components/Selector";
@@ -28,14 +28,11 @@ function CurrenciesList() {
   const [selectedValue, setSelectedValue] = useState("");
   return (
     <div>
-      <div className="breadcrumps-container">
-        <Breadcrumps variant="" page="currencies-list">
+      <div className="breadcrumbs-container">
+        <Breadcrumbs linkTo="/" active>
           Currencies list
-        </Breadcrumps>
-        /
-        <Breadcrumps variant="details" page="currencies-list">
-          Details
-        </Breadcrumps>
+        </Breadcrumbs>
+        /<Breadcrumbs linkTo="/details">Details</Breadcrumbs>
       </div>
 
       <Heading variant="title">Currency Converter</Heading>

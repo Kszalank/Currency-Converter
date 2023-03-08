@@ -1,18 +1,15 @@
 import React from "react";
 import Heading from "../components/Heading";
-import Breadcrumps from "../components/Breadcrump";
+import Breadcrumbs from "../components/Breadcrumb";
 
 function DetailsPage() {
   return (
     <div>
-      <div className="breadcrumps-container">
-        <Breadcrumps variant="" page="details">
-          Currencies list
-        </Breadcrumps>
-        /
-        <Breadcrumps variant="details" page="details">
+      <div className="breadcrumbs-container">
+        <Breadcrumbs linkTo="/">Currencies list</Breadcrumbs>/
+        <Breadcrumbs linkTo="/details" active>
           Details
-        </Breadcrumps>
+        </Breadcrumbs>
       </div>
       <Heading variant="title">Currency Converter</Heading>
       <Heading variant="subtitle">Convert values</Heading>
