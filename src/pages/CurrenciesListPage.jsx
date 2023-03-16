@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumb";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
-import Select from "../components/Selector";
+import Select from "../components/Select";
 import {
   Table,
   TableContainer,

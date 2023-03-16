@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Heading from "../components/Heading";
 import Breadcrumbs from "../components/Breadcrumb";
 import Input from "../components/Input";
-import Select from "../components/Selector";
+import Select from "../components/Select";
 
 function DetailsPage() {
   const options = [
