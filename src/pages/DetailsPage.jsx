@@ -3,6 +3,7 @@ import Heading from "../components/Heading";
 import Breadcrumbs from "../components/Breadcrumb";
 import Input from "../components/Input";
 import Select from "../components/Select";
+import CurrentDate from "../components/Date";
 
 function DetailsPage() {
   const options = [
@@ -23,6 +24,7 @@ function DetailsPage() {
       </div>
       <Heading variant="title">Currency Converter</Heading>
       <Heading variant="subtitle">Convert values</Heading>
+      <CurrentDate />
       <div>
         <Input
           value={selectedCurrencyValue}
