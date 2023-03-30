@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Heading from "../components/Heading";
 import Breadcrumbs from "../components/Breadcrumb";
 import Input from "../components/Input";
@@ -6,10 +6,23 @@ import Select from "../components/Select";
 import CurrentDate from "../components/Date";
 
 function DetailsPage() {
-  const options = [
-    { currency: "elo", label: "elo" },
-    { currency: "siema", label: "siema" },
-  ];
+  const [list, setList] = useState("");
+
+  useEffect(() => {
+    fetch(
+      ` https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setList(Object.keys(data.eur));
+      });
+  }, []);
+  const array = [...list];
+  const options = [];
+  array.forEach((value, index) => {
+    options.push({ currency: list[index], label: list[index] });
+  });
+
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [convertedCurrency, setConvertedCurrency] = useState("");
   const [selectedCurrencyValue, setSelectedCurrencyValue] = useState("");
