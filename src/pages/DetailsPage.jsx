@@ -1,33 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Heading from "../components/Heading";
 import Breadcrumbs from "../components/Breadcrumb";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import CurrentDate from "../components/Date";
+import useCurrenciesList from "../components/useCurrenciesListHook";
+import Loading from "../components/Loading";
 
 function DetailsPage() {
-  const [list, setList] = useState("");
+  const { list, loading, error } = useCurrenciesList();
+  if (error) {
+    const e = new Error("Could not load the page");
+    throw e;
+  }
 
-  useEffect(() => {
-    fetch(
-      ` https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json`,
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setList(Object.keys(data.eur));
-      });
-  }, []);
-  const array = [...list];
-  const options = [];
-  array.forEach((value, index) => {
-    options.push({ currency: list[index], label: list[index] });
-  });
+  const options = list.map((item) => ({ currency: item, label: item }));
 
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [convertedCurrency, setConvertedCurrency] = useState("");
   const [selectedCurrencyValue, setSelectedCurrencyValue] = useState("");
   const [convertedCurrencyValue, setConvertedCurrencyValue] = useState("");
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
       <div className="breadcrumbs-container">
         <Breadcrumbs linkTo="/">Currencies list</Breadcrumbs>/
