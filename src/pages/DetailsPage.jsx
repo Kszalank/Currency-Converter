@@ -4,14 +4,13 @@ import Breadcrumbs from "../components/Breadcrumb";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import CurrentDate from "../components/Date";
-import useCurrenciesList from "../components/useCurrenciesListHook";
+import useCurrenciesList from "../hooks/useCurrenciesListHook";
 import Loading from "../components/Loading";
 
 function DetailsPage() {
   const { list, loading, error } = useCurrenciesList();
   if (error) {
-    const e = new Error("Could not load the page");
-    throw e;
+    alert("Could not load the page");
   }
 
   const options = list.map((item) => ({ currency: item, label: item }));

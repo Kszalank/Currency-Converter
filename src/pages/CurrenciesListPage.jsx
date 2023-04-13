@@ -14,14 +14,13 @@ import {
   Td,
 } from "../components/Table";
 import "../styles/CurrenciesListPage.scss";
-import useCurrenciesList from "../components/useCurrenciesListHook";
+import useCurrenciesList from "../hooks/useCurrenciesListHook";
 import Loading from "../components/Loading";
 
 function CurrenciesList() {
   const { list, loading, error } = useCurrenciesList();
   if (error) {
-    const e = new Error("Could not load the page");
-    throw e;
+    alert("Could not load the page");
   }
 
   const options = list.map((item) => ({ currency: item, label: item }));

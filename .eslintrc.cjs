@@ -18,6 +18,8 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": ["off"],
+    "import/prefer-default-export": "off",
+    "no-alert": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {

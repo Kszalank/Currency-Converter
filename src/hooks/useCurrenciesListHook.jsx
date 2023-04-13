@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import baseUrl from "../constants/baseUrl";
+import { baseUrl } from "../constants/baseUrl";
 
 function useCurrenciesList() {
   const [list, setList] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
-    (async function () {
+    async function asynsCall() {
       try {
         setLoading(true);
         fetch(` ${baseUrl}/currencies/eur.json`)
@@ -20,9 +19,9 @@ function useCurrenciesList() {
       } finally {
         setLoading(false);
       }
-    })();
+    }
+    asynsCall();
   }, []);
-
   return { list, error, loading };
 }
 
