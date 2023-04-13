@@ -4,17 +4,24 @@ import Breadcrumbs from "../components/Breadcrumb";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import CurrentDate from "../components/Date";
+import useCurrenciesList from "../hooks/useCurrenciesListHook";
+import Loading from "../components/Loading";
 
 function DetailsPage() {
-  const options = [
-    { currency: "elo", label: "elo" },
-    { currency: "siema", label: "siema" },
-  ];
+  const { list, loading, error } = useCurrenciesList();
+  if (error) {
+    alert("Could not load the page");
+  }
+
+  const options = list.map((item) => ({ currency: item, label: item }));
+
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [convertedCurrency, setConvertedCurrency] = useState("");
   const [selectedCurrencyValue, setSelectedCurrencyValue] = useState("");
   const [convertedCurrencyValue, setConvertedCurrencyValue] = useState("");
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
       <div className="breadcrumbs-container">
         <Breadcrumbs linkTo="/">Currencies list</Breadcrumbs>/

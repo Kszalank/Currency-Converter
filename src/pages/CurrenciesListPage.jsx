@@ -3,6 +3,7 @@ import Breadcrumbs from "../components/Breadcrumb";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import Select from "../components/Select";
+
 import {
   Table,
   TableContainer,
@@ -13,20 +14,27 @@ import {
   Td,
 } from "../components/Table";
 import "../styles/CurrenciesListPage.scss";
+import useCurrenciesList from "../hooks/useCurrenciesListHook";
+import Loading from "../components/Loading";
 
 function CurrenciesList() {
-  const options = [
-    { currency: "elo", label: "elo" },
-    { currency: "siema", label: "siema" },
-  ];
+  const { list, loading, error } = useCurrenciesList();
+  if (error) {
+    alert("Could not load the page");
+  }
+
+  const options = list.map((item) => ({ currency: item, label: item }));
+
   const currenciesChange = [
     { names: "EUR-USD", value: 1, change: 0.341 },
     { names: "EUR-PLN", value: 1, change: 0.02 },
     { names: "EUR-CZK", value: 1, change: 0.01 },
   ];
-  const [selectedCurrency, setSelectedCurrency] = useState("");
+  const [selectedCurrency, setSelectedCurrency] = useState("usd");
   const [selectedValue, setSelectedValue] = useState("");
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div>
       <div className="breadcrumbs-container">
         <Breadcrumbs linkTo="/" active>
