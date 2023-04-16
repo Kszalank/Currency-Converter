@@ -21,9 +21,7 @@ import Loading from "../components/Loading";
 function CurrenciesList() {
   const [selectedCurrency, setSelectedCurrency] = useState("usd");
   const { list, loading, error } = useCurrenciesList();
-  if (error) {
-    alert("Could not load the page");
-  }
+
   const {
     baseCurrency,
     convertedCurrencyArray,
@@ -32,7 +30,7 @@ function CurrenciesList() {
     tableLoading,
   } = useCurrenciesTable(selectedCurrency);
 
-  if (tableError) {
+  if (error || tableError) {
     alert("Could not load the page");
   }
   const options = list.map((item) => ({ currency: item, label: item }));

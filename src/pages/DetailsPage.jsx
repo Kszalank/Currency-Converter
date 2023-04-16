@@ -6,20 +6,24 @@ import Select from "../components/Select";
 import CurrentDate from "../components/Date";
 import useCurrenciesList from "../hooks/useCurrenciesListHook";
 import Loading from "../components/Loading";
+import useCurrenciesComparison from "../hooks/useCurrenciesCoparisonHook";
 
 function DetailsPage() {
+  const [selectedCurrency, setSelectedCurrency] = useState("usd");
+  const [convertedCurrency, setConvertedCurrency] = useState("usd");
+  const [selectedCurrencyValue, setSelectedCurrencyValue] = useState("");
   const { list, loading, error } = useCurrenciesList();
-  if (error) {
+
+  const { convertedValue, convertingLoading, convertingError } =
+    useCurrenciesComparison(selectedCurrency, convertedCurrency);
+
+  if (error || convertingError) {
     alert("Could not load the page");
   }
 
   const options = list.map((item) => ({ currency: item, label: item }));
 
-  const [selectedCurrency, setSelectedCurrency] = useState("");
-  const [convertedCurrency, setConvertedCurrency] = useState("");
-  const [selectedCurrencyValue, setSelectedCurrencyValue] = useState("");
-  const [convertedCurrencyValue, setConvertedCurrencyValue] = useState("");
-  return loading ? (
+  return loading || convertingLoading ? (
     <Loading />
   ) : (
     <div>
@@ -44,12 +48,11 @@ function DetailsPage() {
           }}
           options={options}
         />
-        <div>{`${selectedCurrencyValue} ${selectedCurrency}`}</div>
       </div>
       <div>
         <Input
-          value={convertedCurrencyValue}
-          onChange={(event) => setConvertedCurrencyValue(event.target.value)}
+          value={(convertedValue * selectedCurrencyValue).toFixed(2)}
+          onChange={(event) => event.target.value}
         />
         <Select
           value={convertedCurrency}
@@ -58,7 +61,6 @@ function DetailsPage() {
           }}
           options={options}
         />
-        <div>{`${convertedCurrencyValue} ${convertedCurrency}`}</div>
       </div>
     </div>
   );
