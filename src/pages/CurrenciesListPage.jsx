@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumb";
 import Heading from "../components/Heading";
-
+import ConvertButton from "../components/ConvertButton";
 import Select from "../components/Select";
 
 import {
@@ -12,10 +12,12 @@ import {
   Tbody,
   Tr,
   Td,
+  Tdd,
 } from "../components/Table";
 import "../styles/CurrenciesListPage.scss";
 import useCurrenciesList from "../hooks/useCurrenciesListHook";
 import useCurrenciesTable from "../hooks/useCurrenciesTableHook";
+
 import Loading from "../components/Loading";
 
 function CurrenciesList() {
@@ -38,6 +40,8 @@ function CurrenciesList() {
     names: `${baseCurrency.toUpperCase()} - ${item.toUpperCase()}`,
     value: 1,
     change: convertedValueArray[index].toFixed(2),
+    chosenCurrency: item,
+    baseCurrency,
   }));
 
   return loading || tableLoading ? (
@@ -73,13 +77,24 @@ function CurrenciesList() {
             </Tr>
           </Thead>
           <Tbody>
-            {currenciesChange.map(({ names, value, change }) => (
-              <Tr key={names + value + change}>
-                <Td>{names}</Td>
-                <Td>{value}</Td>
-                <Td>{change}</Td>
-              </Tr>
-            ))}
+            {currenciesChange.map(
+              ({ names, value, change, chosenCurrency }) => (
+                <Tr key={names + value + change}>
+                  <Tdd>
+                    {names}
+                    <ConvertButton
+                      linkTo="/details"
+                      onClick={() => {
+                        localStorage.setItem("baseCurrency", selectedCurrency);
+                        localStorage.setItem("convertCurrency", chosenCurrency);
+                      }}
+                    />
+                  </Tdd>
+                  <Td>{value}</Td>
+                  <Td>{change}</Td>
+                </Tr>
+              ),
+            )}
           </Tbody>
         </Table>
       </TableContainer>

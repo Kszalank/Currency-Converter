@@ -13,6 +13,13 @@ width: 60vw;
   border: 1px #999999 solid;
   padding:0;
   border-spacing: 0;
+  width:60vh;
+  
+}
+&--currency {
+  display: flex;
+  justify-content: space-between;
+
 }
   }
   .table-container{

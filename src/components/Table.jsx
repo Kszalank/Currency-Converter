@@ -23,3 +23,6 @@ export function Tbody({ children }) {
 export function Td({ children }) {
   return <td className="table--element">{children}</td>;
 }
+export function Tdd({ children }) {
+  return <td className="table--element table--currency">{children}</td>;
+}
