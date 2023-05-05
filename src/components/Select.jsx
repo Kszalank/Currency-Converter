@@ -5,7 +5,7 @@ function Select({ value, onChange, options }) {
   return (
     <select onChange={onChange} value={value} className="select">
       {options.map(({ currency, label }) => (
-        <option key={currency} label={label}>
+        <option key={currency} label={label.toUpperCase()}>
           {currency}
         </option>
       ))}

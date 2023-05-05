@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Breadcrumbs from "../components/Breadcrumb";
 import Heading from "../components/Heading";
-
+import ConvertButton from "../components/ConvertButton";
 import Select from "../components/Select";
+import CurrentDate from "../components/Date";
 
 import {
   Table,
@@ -11,11 +12,14 @@ import {
   Th,
   Tbody,
   Tr,
-  Td,
+  Tcurrency,
+  Tvalue,
+  Tchange,
 } from "../components/Table";
 import "../styles/CurrenciesListPage.scss";
 import useCurrenciesList from "../hooks/useCurrenciesListHook";
 import useCurrenciesTable from "../hooks/useCurrenciesTableHook";
+
 import Loading from "../components/Loading";
 
 function CurrenciesList() {
@@ -38,12 +42,16 @@ function CurrenciesList() {
     names: `${baseCurrency.toUpperCase()} - ${item.toUpperCase()}`,
     value: 1,
     change: convertedValueArray[index].toFixed(2),
+    chosenCurrency: item,
+    baseCurrency,
   }));
 
   return loading || tableLoading ? (
     <Loading />
   ) : (
     <div>
+      <Heading variant="title">Currency Converter</Heading>
+      <CurrentDate />
       <div className="breadcrumbs-container">
         <Breadcrumbs linkTo="/" active>
           Currencies list
@@ -51,9 +59,8 @@ function CurrenciesList() {
         /<Breadcrumbs linkTo="/details">Details</Breadcrumbs>
       </div>
 
-      <Heading variant="title">Currency Converter</Heading>
-      <div className="currency-select">
-        <Heading variant="subtitle">Choose base currency</Heading>
+      <Heading variant="subtitle">Choose base currency</Heading>
+      <div className="select-div">
         <Select
           value={selectedCurrency}
           onChange={(event) => {
@@ -73,13 +80,33 @@ function CurrenciesList() {
             </Tr>
           </Thead>
           <Tbody>
-            {currenciesChange.map(({ names, value, change }) => (
-              <Tr key={names + value + change}>
-                <Td>{names}</Td>
-                <Td>{value}</Td>
-                <Td>{change}</Td>
-              </Tr>
-            ))}
+            {currenciesChange.map(
+              ({ names, value, change, chosenCurrency }) => (
+                <Tr key={names + value + change}>
+                  <Tcurrency>
+                    <div className="table-currencies">
+                      {names}
+                      <ConvertButton
+                        linkTo="/details"
+                        onClick={() => {
+                          localStorage.setItem(
+                            "baseCurrency",
+                            selectedCurrency,
+                          );
+                          localStorage.setItem(
+                            "convertCurrency",
+                            chosenCurrency,
+                          );
+                          localStorage.setItem("baseCurrencyValue", 1);
+                        }}
+                      />
+                    </div>
+                  </Tcurrency>
+                  <Tvalue>{value}</Tvalue>
+                  <Tchange>{change}</Tchange>
+                </Tr>
+              ),
+            )}
           </Tbody>
         </Table>
       </TableContainer>

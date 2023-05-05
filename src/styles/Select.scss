@@ -1,7 +1,12 @@
+
 .select { 
-    border-radius: 5px;
-    margin: 5px;
     width:100px;
-    height: 38px;
-    margin-left: 30px;
+    height: 52px;
+    font-family: 'Lato';
+    text-align: center;
+
+}
+
+.select:hover{
+border: 2px solid white;
 }
