@@ -1,34 +1,49 @@
 .table{
-    overflow-y: scroll;
-width: 60vw;
-
+border-collapse: separate;
+border-spacing: 0;
 
 &--heading{
-  background-color:#040404;
-  border: 1px #999999 solid;
+top:0;
+position: sticky;
+align-content: center;
+background-color:#040404;
+justify-content: center;
+border: 1px solid white;
+text-align: center;
+padding:0;
+margin:0;
+height: 30px;
 }
 
 &--element {
-  text-align: center;
-  border: 1px #999999 solid;
-  padding:0;
-  border-spacing: 0;
-  width:60vh;
-  
+text-align: center;
+padding:0;
+margin:0;
+height: 30px;
+border: 1px solid white;
 }
 &--currency {
-  display: flex;
-  justify-content: space-between;
+  width:30vh;
+  border-left: 2px solid white;
+}
+&--value{
+width:10vh;
 
 }
+&--change{
+  width:20vh;
+  border-right: 2px solid white;
+}
+
   }
   .table-container{
-    position: relative;
-    overflow-y: scroll;
-    height: 60vh;
 
+    display: flex;
+    height: 60vh;
+    overflow-y: scroll;
     overflow-x: hidden;
-    
+    justify-content: center;
+
   }
   ::-webkit-scrollbar{
     background-color: #303030;

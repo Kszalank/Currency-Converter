@@ -1,13 +1,13 @@
 .currency-changer{
     margin-left: 10px;
-    height: 100px;
-    border-radius: 5px;
+    width: 100px;
+    height: auto;
+background-color: #242424;
+border: none;
 }
 
 .arrows{
     filter: invert(100%)brightness(100%) sepia(1) hue-rotate(179.4deg) saturate(101.4%) brightness(101.4%);
-
-    rotate: 90deg;
-    height: 30px;
-    width: 30px;
+    width: 25px;
+    justify-content: center;
 }

@@ -4,7 +4,7 @@ import "../styles/ConvertButton.scss";
 
 function ConvertButton({ linkTo, onClick }) {
   return (
-    <div className="convert-button">
+    <div>
       <Link to={linkTo} className="convert-button-link" onClick={onClick}>
         &#62;
       </Link>

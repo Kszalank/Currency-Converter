@@ -17,7 +17,9 @@ function DetailsPage() {
   const [convertedCurrency, setConvertedCurrency] = useState(
     localStorage.getItem("convertCurrency"),
   );
-  const [selectedCurrencyValue, setSelectedCurrencyValue] = useState("");
+  const [selectedCurrencyValue, setSelectedCurrencyValue] = useState(
+    localStorage.getItem("baseCurrencyValue"),
+  );
   const { list, loading, error } = useCurrenciesList();
 
   const { convertedValue, convertingLoading, convertingError } =
@@ -33,44 +35,33 @@ function DetailsPage() {
     <Loading />
   ) : (
     <div className="">
+      <Heading variant="title">Currency Converter</Heading>
+      <CurrentDate />
       <div className="breadcrumbs-container">
         <Breadcrumbs linkTo="/">Currencies list</Breadcrumbs>/
         <Breadcrumbs linkTo="/details" active>
           Details
         </Breadcrumbs>
       </div>
-      <Heading variant="title">Currency Converter</Heading>
+
       <Heading variant="subtitle">Convert values</Heading>
-      <CurrentDate />
+
       <div className="converter-container">
         <div>
-          <div>
-            <Input
-              value={selectedCurrencyValue}
-              onChange={(event) => setSelectedCurrencyValue(event.target.value)}
-            />
-            <Select
-              value={selectedCurrency}
-              onChange={(event) => {
-                setSelectedCurrency(event.target.value);
-              }}
-              options={options}
-            />
-          </div>
-
-          <div>
-            <Input
-              value={(convertedValue * selectedCurrencyValue).toFixed(2)}
-              onChange={(event) => event.target.value}
-            />
-            <Select
-              value={convertedCurrency}
-              onChange={(event) => {
-                setConvertedCurrency(event.target.value);
-              }}
-              options={options}
-            />
-          </div>
+          <Input
+            value={selectedCurrencyValue}
+            onChange={(event) => {
+              setSelectedCurrencyValue(event.target.value);
+              localStorage.setItem("baseCurrencyValue", selectedCurrencyValue);
+            }}
+          />
+          <Select
+            value={selectedCurrency}
+            onChange={(event) => {
+              setSelectedCurrency(event.target.value);
+            }}
+            options={options}
+          />
         </div>
         <CurrencyChanger
           onClick={() => {
@@ -80,6 +71,19 @@ function DetailsPage() {
             localStorage.setItem("convertCurrency", selectedCurrency);
           }}
         />
+        <div>
+          <Input
+            value={(convertedValue * selectedCurrencyValue).toFixed(2)}
+            onChange={(event) => event.target.value}
+          />
+          <Select
+            value={convertedCurrency}
+            onChange={(event) => {
+              setConvertedCurrency(event.target.value);
+            }}
+            options={options}
+          />
+        </div>
       </div>
     </div>
   );

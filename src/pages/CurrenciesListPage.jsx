@@ -3,6 +3,7 @@ import Breadcrumbs from "../components/Breadcrumb";
 import Heading from "../components/Heading";
 import ConvertButton from "../components/ConvertButton";
 import Select from "../components/Select";
+import CurrentDate from "../components/Date";
 
 import {
   Table,
@@ -11,8 +12,9 @@ import {
   Th,
   Tbody,
   Tr,
-  Td,
-  Tdd,
+  Tcurrency,
+  Tvalue,
+  Tchange,
 } from "../components/Table";
 import "../styles/CurrenciesListPage.scss";
 import useCurrenciesList from "../hooks/useCurrenciesListHook";
@@ -48,6 +50,8 @@ function CurrenciesList() {
     <Loading />
   ) : (
     <div>
+      <Heading variant="title">Currency Converter</Heading>
+      <CurrentDate />
       <div className="breadcrumbs-container">
         <Breadcrumbs linkTo="/" active>
           Currencies list
@@ -55,9 +59,8 @@ function CurrenciesList() {
         /<Breadcrumbs linkTo="/details">Details</Breadcrumbs>
       </div>
 
-      <Heading variant="title">Currency Converter</Heading>
-      <div className="currency-select">
-        <Heading variant="subtitle">Choose base currency</Heading>
+      <Heading variant="subtitle">Choose base currency</Heading>
+      <div className="select-div">
         <Select
           value={selectedCurrency}
           onChange={(event) => {
@@ -80,18 +83,27 @@ function CurrenciesList() {
             {currenciesChange.map(
               ({ names, value, change, chosenCurrency }) => (
                 <Tr key={names + value + change}>
-                  <Tdd>
-                    {names}
-                    <ConvertButton
-                      linkTo="/details"
-                      onClick={() => {
-                        localStorage.setItem("baseCurrency", selectedCurrency);
-                        localStorage.setItem("convertCurrency", chosenCurrency);
-                      }}
-                    />
-                  </Tdd>
-                  <Td>{value}</Td>
-                  <Td>{change}</Td>
+                  <Tcurrency>
+                    <div className="table-currencies">
+                      {names}
+                      <ConvertButton
+                        linkTo="/details"
+                        onClick={() => {
+                          localStorage.setItem(
+                            "baseCurrency",
+                            selectedCurrency,
+                          );
+                          localStorage.setItem(
+                            "convertCurrency",
+                            chosenCurrency,
+                          );
+                          localStorage.setItem("baseCurrencyValue", 1);
+                        }}
+                      />
+                    </div>
+                  </Tcurrency>
+                  <Tvalue>{value}</Tvalue>
+                  <Tchange>{change}</Tchange>
                 </Tr>
               ),
             )}
