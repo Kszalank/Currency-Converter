@@ -1,12 +1,22 @@
 
 .select { 
     width:100px;
-    height: 52px;
+    height: 54px;
     font-family: 'Lato';
     text-align: center;
+    // background-color:rgba(30,30,91,1);
+    border:1px solid white;
+    color:white;
+    background: none;
 
 }
 
+
+select option{
+    background-color:rgba(30,30,91,1);
+}
+
 .select:hover{
-border: 2px solid white;
+border: 2px solid rgba(0,212,255,1);
+
 }

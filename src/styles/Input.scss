@@ -3,6 +3,16 @@
     width: 200px;
     margin-left: 30px;
     font-family: 'Lato';
-    border:none;
+    border-left:1px solid white;
+    border-top:1px solid white;
+    border-bottom: 1px solid white;
+    border-right: none;
     text-align: center;
+
+    color:white;
+    background: none;
 }
+
+.input:hover{
+    border: 1px solid rgba(0,212,255,1);
+    }
