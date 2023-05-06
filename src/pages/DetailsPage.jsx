@@ -61,6 +61,7 @@ function DetailsPage() {
               setSelectedCurrency(event.target.value);
             }}
             options={options}
+            page="details"
           />
         </div>
         <CurrencyChanger
@@ -82,6 +83,7 @@ function DetailsPage() {
               setConvertedCurrency(event.target.value);
             }}
             options={options}
+            page="details"
           />
         </div>
       </div>

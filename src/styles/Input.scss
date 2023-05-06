@@ -11,8 +11,18 @@
 
     color:white;
     background: none;
+    border-radius: 20px 0px 0px 20px;
 }
 
 .input:hover{
-    border: 1px solid rgba(0,212,255,1);
+    border-left:1px solid rgba(0,212,255,1);
+    border-top:1px solid rgba(0,212,255,1);
+    border-bottom: 1px solid rgba(0,212,255,1);
+    }
+
+    .input:focus{
+        outline: none;
+        border-left:1px solid rgba(0,212,255,1);
+        border-top:1px solid rgba(0,212,255,1);
+        border-bottom: 1px solid rgba(0,212,255,1);
     }
