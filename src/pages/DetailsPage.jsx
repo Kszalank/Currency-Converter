@@ -47,7 +47,7 @@ function DetailsPage() {
       <Heading variant="subtitle">Convert values</Heading>
 
       <div className="converter-container">
-        <div>
+        <div className="converter-div">
           <Input
             value={selectedCurrencyValue}
             onChange={(event) => {
@@ -72,7 +72,7 @@ function DetailsPage() {
             localStorage.setItem("convertCurrency", selectedCurrency);
           }}
         />
-        <div>
+        <div className="converter-div">
           <Input
             value={(convertedValue * selectedCurrencyValue).toFixed(2)}
             onChange={(event) => event.target.value}

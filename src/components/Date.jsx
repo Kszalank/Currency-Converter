@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Date.scss";
+import calendar from "../assets/calendar.svg";
 
 function CurrentDate() {
   const date = new Date();
@@ -8,7 +9,10 @@ function CurrentDate() {
   const year = date.getFullYear();
   return (
     <div className="date">
-      {month} {day}, {year}
+      <img src={calendar} alt="calendar" className="calendar" />
+      <span className="current-date">
+        {month} {day}, {year}
+      </span>
     </div>
   );
 }
