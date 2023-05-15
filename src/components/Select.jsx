@@ -1,11 +1,15 @@
 import React from "react";
 import "../styles/Select.scss";
 
-function Select({ value, onChange, options }) {
+function Select({ value, onChange, options, page }) {
   return (
-    <select onChange={onChange} value={value} className="select">
+    <select onChange={onChange} value={value} className={`select-${page}`}>
       {options.map(({ currency, label }) => (
-        <option key={currency} label={label.toUpperCase()}>
+        <option
+          className="option-element"
+          key={currency}
+          label={label.toUpperCase()}
+        >
           {currency}
         </option>
       ))}

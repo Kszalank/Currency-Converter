@@ -67,6 +67,7 @@ function CurrenciesList() {
             setSelectedCurrency(event.target.value);
           }}
           options={options}
+          page="list"
         />
       </div>
 

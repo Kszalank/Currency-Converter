@@ -1,12 +1,56 @@
 
-.select { 
+.select-list, .select-details { 
     width:100px;
-    height: 52px;
+    height: 54px;
     font-family: 'Lato';
     text-align: center;
-
+    border:none;
+    border-right:1px solid white;
+    border-top:1px solid white;
+    border-bottom: 1px solid white;
+    color:white;
+    background: none;
+    border-radius: 0  20px 20px 0;
+    appearance: none;
+}
+.select-list{
+    border-radius: 20px 20px;
+    border-left:1px solid white;
 }
 
-.select:hover{
-border: 2px solid white;
+.option-element{
+    background-color:rgba(30,30,91,1);
+}
+
+.select-details:hover, .select-list:hover{
+    border-right:1px solid rgba(0,212,255,1);
+    border-top:1px solid rgba(0,212,255,1);
+    border-bottom: 1px solid rgba(0,212,255,1);
+}
+
+.select-list:hover{
+    border-left:1px solid rgba(0,212,255,1);
+}
+
+.select-list:focus, .select-details:focus{
+    outline: none;
+}
+
+
+@media (max-width:700px){
+
+    .select-details {
+width:102px;
+        border-radius: 0  0 20px 20px;
+        border-top:none;
+        border-right:1px solid white;
+        border-left:1px solid white;
+        border-bottom: 1px solid white;
+    }
+    .select-details:hover{
+        border-left:1px solid rgba(0,212,255,1);
+        border-right:1px solid rgba(0,212,255,1);
+        border-top:none;
+        border-bottom: 1px solid rgba(0,212,255,1);
+    }
 }

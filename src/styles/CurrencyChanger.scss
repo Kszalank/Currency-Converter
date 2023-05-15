@@ -2,11 +2,12 @@
     margin-left: 10px;
     width: 100px;
     height: auto;
-background-color: #242424;
 border: none;
+background: none;
 }
 
 .arrows{
+
     filter: invert(100%)brightness(100%) sepia(1) hue-rotate(179.4deg) saturate(101.4%) brightness(101.4%);
     width: 25px;
     justify-content: center;
